@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🍕 DevPizza
 
-## Getting Started
+Sistema interno de gerenciamento de pedidos para pizzarias, focado em otimizar o fluxo entre garçons, cozinha e gerência.
 
-First, run the development server:
+## 📋 Visão Geral
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+O **DevPizza** é uma aplicação web completa desenvolvida para uso interno em pizzarias, onde garçons registram pedidos diretamente da mesa, a cozinha acompanha em tempo real apenas os pedidos confirmados, e o gerente finaliza o processo com a cobrança.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🔧 Tecnologias Utilizadas
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 💻 Frontend
+- Next.js
+- TypeScript
+- Tailwind CSS
+- React Icons
+- React Toastify (notificações)
+- **Axios** (requisições HTTP para o backend)
 
-## Learn More
+### 🔙 Backend
+- Node.js
+- Express
+- Prisma ORM
+- PostgreSQL
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🧠 Funcionalidades
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 🧾 Pedidos
+- Garçom pode registrar o nome do cliente, número da mesa e itens do pedido.
+- Os pedidos iniciam como `rascunho` (`draft = true`), e **não são visíveis para a cozinha** até serem finalizados pelo garçom.
+- Ao confirmar, o `draft` é alterado para `false` e a cozinha pode visualizar e iniciar o preparo.
 
-## Deploy on Vercel
+### 🍳 Cozinha
+- Acompanha somente os pedidos confirmados.
+- Pode alterar o status do pedido para `finalizado` (`status = true`), indicando que está pronto para entrega.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 💰 Gerente
+- Acompanha pedidos finalizados e realiza a cobrança com base nos itens consumidos.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 👨‍🍳 Usuários do Sistema
+- Cadastro de funcionários (garçom, cozinha, gerente).
+- Verificação de e-mail duplicado e senha segura (criptografada com `bcrypt`).
+- Impede cadastros inválidos e garante controle de acesso.
+
+---
+
+## 🗂 Estrutura de Código
+
+- `frontend/` → Aplicação Next.js
+- `backend/` → API Express com Prisma e PostgreSQL
+- `prisma/` → Esquema do banco de dados e migrations
+
