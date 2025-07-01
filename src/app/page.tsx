@@ -1,7 +1,7 @@
 export default function Home() {
   return (
     <main>
-      <h1>Heelo</h1>
+      <h1 className="text-2xl">Heelo</h1>
     </main>
   );
 }

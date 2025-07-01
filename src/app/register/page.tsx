@@ -12,7 +12,6 @@ import { toast } from "react-toastify";
 // components
 import Logo from "../../components/logo";
 
-
 interface FormRegister {
   name: string;
   email: string;
@@ -22,7 +21,6 @@ interface FormRegister {
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
 
- 
   const {
     register,
     handleSubmit,
@@ -39,7 +37,7 @@ export default function Register() {
     return regex.test(senha);
   }
 
- // Formulario de envio
+  // Formulario de envio
   async function handleRegister(data: FormRegister) {
     try {
       // VERIFICAR SE O EMAIL JA ESTA CADASTRADO NO DB
@@ -67,7 +65,11 @@ export default function Register() {
 
   return (
     <main className="w-full  h-screen flex justify-center items-center">
-      <div className=" p-5 flex flex-col items-center w-3/10">
+      <div
+        className=" p-5 flex flex-col items-center w-3/10 
+      max-sm:w-9/10
+      "
+      >
         <Logo textSize="text-7xl max-sm:text-6xl" iconsSize={60} />
         <h1 className="text-2xl mt-1 ">Cadastrar-se</h1>
         <form
