@@ -1,10 +1,14 @@
 # 🍕 DevPizza
 
-Sistema interno de gerenciamento de pedidos para pizzarias, focado em otimizar o fluxo entre garçons, cozinha e gerência.
+Sistema interno completo de gerenciamento de pedidos para pizzarias, com foco em agilidade no atendimento, organização da cozinha e controle gerencial.
+
+---
 
 ## 📋 Visão Geral
 
-O **DevPizza** é uma aplicação web completa desenvolvida para uso interno em pizzarias, onde garçons registram pedidos diretamente da mesa, a cozinha acompanha em tempo real apenas os pedidos confirmados, e o gerente finaliza o processo com a cobrança.
+O **DevPizza** é uma aplicação web fullstack desenvolvida para uso interno em pizzarias. Permite que garçons façam pedidos diretamente da mesa, que a cozinha acompanhe os pedidos confirmados em tempo real e que o gerente finalize o processo com a cobrança.
+
+> ✅ **Totalmente responsivo**, adaptado para uso em **computadores e celulares** (ideal para tablets e smartphones usados por garçons e cozinheiros).
 
 ---
 
@@ -16,38 +20,57 @@ O **DevPizza** é uma aplicação web completa desenvolvida para uso interno em 
 - Tailwind CSS
 - React Icons
 - React Toastify (notificações)
-- **Axios** (requisições HTTP para o backend)
+- Axios (requisições HTTP)
 
 ### 🔙 Backend
 - Node.js
 - Express
 - Prisma ORM
 - PostgreSQL
+- Bcrypt.js (criptografia de senhas)
+- JSON Web Token (autenticação via token)
+- TypeScript
 
 ---
 
 ## 🧠 Funcionalidades
 
-### 🧾 Pedidos
-- Garçom pode registrar o nome do cliente, número da mesa e itens do pedido.
-- Os pedidos iniciam como `rascunho` (`draft = true`), e **não são visíveis para a cozinha** até serem finalizados pelo garçom.
-- Ao confirmar, o `draft` é alterado para `false` e a cozinha pode visualizar e iniciar o preparo.
+### 👨‍🍳 Cadastro de Funcionários
+- Verificação de e-mail duplicado
+- Senhas criptografadas
+- Impede cadastros inválidos
+- Retorno de token JWT no login
+- Middleware de autenticação com token
+
+### 🧾 Gestão de Pedidos
+- Garçom registra:
+  - Nome do cliente
+  - Número da mesa
+  - Produtos consumidos
+- Os pedidos iniciam como **rascunho** (`draft = true`)
+- Somente pedidos **confirmados** (`draft = false`) são enviados para a cozinha
 
 ### 🍳 Cozinha
-- Acompanha somente os pedidos confirmados.
-- Pode alterar o status do pedido para `finalizado` (`status = true`), indicando que está pronto para entrega.
+- Visualiza apenas os pedidos confirmados
+- Pode marcar o pedido como **finalizado** (`status = true`)
 
 ### 💰 Gerente
-- Acompanha pedidos finalizados e realiza a cobrança com base nos itens consumidos.
+- Visualiza pedidos finalizados
+- Realiza a cobrança com base nos itens pedidos
 
-### 👨‍🍳 Usuários do Sistema
-- Cadastro de funcionários (garçom, cozinha, gerente).
-- Verificação de e-mail duplicado e senha segura (criptografada com `bcrypt`).
-- Impede cadastros inválidos e garante controle de acesso.
+---
+
+## 🖼 Responsividade
+
+A interface foi construída com **Tailwind CSS** e pensada para:
+- ✅ Telas grandes: interface adaptada para desktops (gerente e cozinha)
+- ✅ Telas pequenas: uso prático em celulares e tablets (garçons)
 
 ---
 
 ## 🗂 Estrutura de Código
+
+
 
 - `frontend/` → Aplicação Next.js
 - `backend/` → API Express com Prisma e PostgreSQL
