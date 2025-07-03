@@ -15,8 +15,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-slate-950 text-white">
-        <ToastContainer autoClose={2000} />
+      <body className="bg-slate-900 text-white">
+        <ToastContainer autoClose={1500} position="top-center" />
         {children}
       </body>
     </html>

@@ -1,4 +1,3 @@
-"use client";
 import { CiPizza } from "react-icons/ci";
 
 interface LogoProps {
@@ -13,7 +12,7 @@ export default function Logo({
   return (
     <div className={`${textSize}`}>
       <span className="text-white font-bold">Dev</span>
-      <span className="text-red-600">Pizza</span>
+      <span className="text-red-400">Pizza</span>
       <CiPizza size={iconsSize} color="white" className="inline mb-2" />
     </div>
   );

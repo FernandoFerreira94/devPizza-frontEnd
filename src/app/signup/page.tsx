@@ -3,16 +3,16 @@
 // hook Node
 import Link from "next/link";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { api } from "../../service/api";
 
 // components
-import Logo from "../../components/logo";
+import Logo from "../../logo";
 
-interface FormRegister {
+interface FormData {
   name: string;
   email: string;
   password: string;
@@ -26,7 +26,7 @@ export default function Register() {
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
-  } = useForm<FormRegister>();
+  } = useForm<FormData>();
 
   const router = useRouter();
 
@@ -38,15 +38,12 @@ export default function Register() {
   }
 
   // Formulario de envio
-  async function handleRegister(data: FormRegister) {
+  async function handleRegister(data: FormData) {
     try {
       // VERIFICAR SE O EMAIL JA ESTA CADASTRADO NO DB
-      const check = await axios.post(
-        "http://localhost:3333/users/check-email",
-        {
-          email: data.email,
-        }
-      );
+      const check = await api.post("/users/check-email", {
+        email: data.email,
+      });
 
       if (check.data.exists) {
         toast.info("Email ja cadastrado");
@@ -54,10 +51,10 @@ export default function Register() {
       }
 
       // ENVIO DO FORMULARIO PARA O DB
-      await axios.post("http://localhost:3333/users", data);
+      await api.post("/users", data);
       toast.success("Cadastro realizado com sucesso");
       reset();
-      router.push("/login");
+      router.push("/");
     } catch (error) {
       console.error(error);
     }
@@ -141,7 +138,7 @@ export default function Register() {
             className="text-white text-center 
           transition duration-500 hover:text-slate-400
           "
-            href="/login"
+            href="/"
           >
             Já possui uma conta? clica aqui
           </Link>
