@@ -7,8 +7,10 @@ export default function DashboardLayout({
 }) {
   return (
     <>
-      <Header />
-      {children}
+      <div className="flex flex-col h-screen ">
+        <Header />
+        {children}
+      </div>
     </>
   );
 }

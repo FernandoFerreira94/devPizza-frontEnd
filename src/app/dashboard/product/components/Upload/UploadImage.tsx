@@ -3,14 +3,12 @@ import { TbPhotoUp } from "react-icons/tb";
 import { useState } from "react";
 import Image from "next/image";
 export default function UploadImg() {
-  const [file, setFile] = useState<File | null>(null);
   const [previewImg, setPreviewImg] = useState<string | null>(null);
 
   function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
     if (e.target.files && e.target.files[0]) {
       const image = e.target.files[0];
 
-      setFile(image);
       setPreviewImg(URL.createObjectURL(image));
     }
   }
