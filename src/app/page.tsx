@@ -2,7 +2,6 @@
 import Logo from "@/logo/index";
 import Link from "next/link";
 import { useState } from "react";
-import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { api } from "@/service/api";
@@ -27,16 +26,14 @@ export default function Login() {
         return;
       }
 
-      const { token, name } = response.data;
+      const { token } = response.data;
 
       Cookies.set("devPizzaToken", token, {
         expires: 7, // 7 dias
         path: "/", // disponível em toda a aplicação
       });
       router.push("/dashboard");
-      toast.success(`Seja bem vindo ${name} 😉`);
     } catch (error) {
-      toast.error("Email ou senha incorretos");
       console.error(error);
     }
   }
@@ -57,7 +54,7 @@ export default function Login() {
           <input
             className="text-white text-sm bg-slate-800 py-2 px-3 rounded-md w-full"
             type="text"
-            placeholder="Digite seu email"
+            placeholder="admin@admin.com"
             value={email}
             required
             onChange={(e) => setEmail(e.target.value)}
@@ -68,7 +65,7 @@ export default function Login() {
             <input
               className="text-white text-sm bg-slate-800 py-2 px-3 rounded-md w-full"
               type={showPassword ? "text " : "password"}
-              placeholder="Ex: Abc123@"
+              placeholder="Admin@123"
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -85,7 +82,7 @@ export default function Login() {
             </span>
           </div>
           <input
-            className="text-white bg-red-600 py-1 px-3 rounded-md w-full cursor-pointer 
+            className="text-white bg-red-500 py-1 px-3 rounded-md w-full cursor-pointer 
             transition duration-500 hover:bg-red-700
             "
             type="submit"

@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useState } from "react";
-import { toast } from "react-toastify";
+
 import { api } from "../../service/api";
 
 // components
@@ -46,13 +46,12 @@ export default function Register() {
       });
 
       if (check.data.exists) {
-        toast.info("Email ja cadastrado");
         return;
       }
 
       // ENVIO DO FORMULARIO PARA O DB
       await api.post("/users", data);
-      toast.success("Cadastro realizado com sucesso");
+
       reset();
       router.push("/");
     } catch (error) {
@@ -125,7 +124,7 @@ export default function Register() {
 
           {/* SUBMIT */}
           <input
-            className="text-white bg-red-600 py-1 px-3 rounded-md w-full cursor-pointer 
+            className="text-white bg-red-500 py-1 px-3 rounded-md w-full cursor-pointer 
             transition duration-500 hover:bg-red-700
             "
             type="submit"
