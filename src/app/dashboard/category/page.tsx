@@ -26,11 +26,11 @@ export default function Category() {
     <>
       <main
         className="w-full flex flex-col justify-center items-center  mt-30
-          max-md:mt-20"
+          max-md:mt-20 "
       >
         <div
           className="w-3/10 flex items-center gap-5  flex-col
-            max-md:w-6/10 max-md:justify-center"
+            max-md:w-8/10 max-lg:w-6/10 max-md:justify-center"
         >
           <h1 className="text-2xl font-bold text-start">Nova categoria</h1>
           <form

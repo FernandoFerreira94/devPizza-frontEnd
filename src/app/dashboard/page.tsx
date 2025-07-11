@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { api } from "@/service/api";
 import Link from "next/link";
 
 import { FiRefreshCw } from "react-icons/fi";
@@ -24,7 +24,7 @@ export default function Dashboard() {
       setLoading(true);
       const token = getCookiesClient();
       try {
-        const response = await axios.get("http://localhost:3333/orders", {
+        const response = await api.get("/orders", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

@@ -1,11 +1,17 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   experimental: {
-    serverActions: { bodySizeLimit: "10mb" }, // habilita ações de servidor no App Router
+    serverActions: {
+      bodySizeLimit: "10mb",
+    },
   },
-  // middleware matcher: define quais rotas o middleware vai proteger
-  matcher: ["/dashboard/:path*", "/profile/:path*", "/orders/:path*"],
+  images: {
+    remotePatterns: [
+      {
+        hostname: "res.cloudinary.com",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

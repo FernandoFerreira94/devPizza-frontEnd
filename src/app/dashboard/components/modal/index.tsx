@@ -3,7 +3,6 @@ import { IoClose } from "react-icons/io5";
 import { getCookiesClient } from "@/lib/cookieClient";
 import { api } from "@/service/api";
 import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
 
 interface ModalProps {
   closeModal: () => void;
@@ -15,7 +14,7 @@ interface DetailProps {
   amount: number;
   product: {
     name: string;
-    price: string;
+    price: number;
     description: string;
     banner: string;
   };
@@ -74,7 +73,7 @@ export default function Modal({ closeModal, orderId }: ModalProps) {
           },
         }
       );
-      toast.success("Pedido finalizado com sucesso!");
+
       closeModal();
     } catch (error) {
       console.error(error);
@@ -91,7 +90,7 @@ export default function Modal({ closeModal, orderId }: ModalProps) {
         detail.map((item) => (
           <section
             className="w-3/10 border flex flex-col gap-5 pt-15 pb-8 rounded-md px-5 bg-slate-900 relative z-50
-            max-xl:w-8/10
+            max-xl:w-5/10 max-md:w-6/10 max-sm:w-8/10
             "
             key={item.id}
           >
@@ -108,18 +107,24 @@ export default function Modal({ closeModal, orderId }: ModalProps) {
                 </span>
               )}
             </div>
-            <article>
+            <article className="flex flex-col gap-2">
               <p className="text=white font-bold">
                 {" "}
-                {item.amount} - {item.product.name}
+                Qtd: {item.amount} - {item.product.name} - R${" "}
+                {item.product.price}
               </p>
+
               <p className="text-slate-400 font-md ">
                 {item.product.description}
               </p>
+              <strong className="text-white">
+                Valor Total: R$ {item.product.price * item.amount}{" "}
+              </strong>
             </article>
             <button
-              className="py-1 px-2 rounded-sm bg-green-500 w-3/10 cursor-pointer
+              className="py-2 px-2 rounded-sm bg-green-500 w-3/10 cursor-pointer
               transistion-colors duration-500 hover:bg-green-600
+              max-md:w-full 
               "
               onClick={handleConfirm}
             >
