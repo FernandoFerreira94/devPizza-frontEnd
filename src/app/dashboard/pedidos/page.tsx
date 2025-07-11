@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { toast } from "react-toastify";
+
 import { MdArrowBack } from "react-icons/md";
 
 import { api } from "@/service/api";
 import { getCookiesClient } from "@/lib/cookieClient";
+import { toast } from "sonner";
 
 export default function Pedidos() {
   const router = useRouter();
@@ -34,7 +35,7 @@ export default function Pedidos() {
 
       // condicao para ver se mesa ja esta aberta
       if (jaExisteMesa) {
-        toast.error("Mesa já esta aberta");
+        toast.warning("Mesa ja esta aberta");
         return;
       }
     } catch (error) {

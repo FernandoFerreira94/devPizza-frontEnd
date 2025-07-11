@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer } from "react-toastify";
 import "./globals.css";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +15,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-slate-900 text-white ">
-        <ToastContainer autoClose={1500} position="top-center" />
+        <Toaster
+          position="bottom-right"
+          duration={2500}
+          toastOptions={{
+            style: {
+              background: "#0f172b",
+              color: "#fff",
+              borderColor: "rgba(255,255,255,0.5)",
+            },
+          }}
+        />
         {children}
       </body>
     </html>

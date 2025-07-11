@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { api } from "@/service/api";
 import Cookies from "js-cookie";
+import { toast } from "sonner";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -26,15 +27,17 @@ export default function Login() {
         return;
       }
 
-      const { token } = response.data;
+      const { token, name } = response.data;
 
       Cookies.set("devPizzaToken", token, {
         expires: 7, // 7 dias
         path: "/", // disponível em toda a aplicação
       });
+      toast.success(`Sejá bem vindo ${name}`);
       router.push("/dashboard");
     } catch (error) {
-      console.error(error);
+      toast.warning("Email ou senha incorretos");
+      console.log(error);
     }
   }
 

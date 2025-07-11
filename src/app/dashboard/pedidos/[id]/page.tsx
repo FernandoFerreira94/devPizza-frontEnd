@@ -4,11 +4,11 @@ import { getCookiesClient } from "@/lib/cookieClient";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { toast } from "react-toastify";
 import { MdArrowBack } from "react-icons/md";
 
 import { CategoryProps, OrderProps, ProductProps } from "@/app/types";
 import { api } from "@/service/api";
+import { toast } from "sonner";
 
 export default function Items() {
   const router = useRouter();
@@ -131,9 +131,11 @@ export default function Items() {
           },
         }
       );
+
       toast.success("Pedido enviado com sucesso");
       router.push("/dashboard");
     } catch (error) {
+      toast.warning("Ops tivemos um erro ao enviar seu pedido");
       console.error(error);
     }
   }
@@ -151,7 +153,7 @@ export default function Items() {
           order_id,
         },
       });
-      toast.info("Pedido cancelado");
+
       router.push("/dashboard");
     } catch (error) {
       console.error(error);

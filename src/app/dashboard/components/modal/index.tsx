@@ -3,6 +3,7 @@ import { IoClose } from "react-icons/io5";
 import { getCookiesClient } from "@/lib/cookieClient";
 import { api } from "@/service/api";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 interface ModalProps {
   closeModal: () => void;
@@ -42,6 +43,7 @@ export default function Modal({ closeModal, orderId }: ModalProps) {
             order_id: orderId,
           },
         });
+        toast.success("Pedido finalizado");
         setDetail(response.data);
       } catch (error) {
         console.error(error);
@@ -73,7 +75,7 @@ export default function Modal({ closeModal, orderId }: ModalProps) {
           },
         }
       );
-
+      toast.success("Pedido finalizado");
       closeModal();
     } catch (error) {
       console.error(error);
