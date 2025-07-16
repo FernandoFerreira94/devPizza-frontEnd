@@ -43,7 +43,7 @@ export default function Modal({ closeModal, orderId }: ModalProps) {
             order_id: orderId,
           },
         });
-        toast.success("Pedido finalizado");
+
         setDetail(response.data);
       } catch (error) {
         console.error(error);
