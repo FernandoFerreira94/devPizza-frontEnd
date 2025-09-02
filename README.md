@@ -10,6 +10,8 @@ O **DevPizza** é uma aplicação web fullstack desenvolvida para uso interno em
 
 > ✅ **Totalmente responsivo**, adaptado para uso em **computadores e celulares** (ideal para tablets e smartphones usados por garçons e cozinheiros).
 
+![Screenshot do projeto](./public/og-image.png)
+
 ---
 
 ## 🔧 Tecnologias Utilizadas
